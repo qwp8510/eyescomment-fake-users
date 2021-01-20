@@ -15,7 +15,7 @@ BASE_URL = 'http://localhost:8000/'
 
 
 class ChromeDriver():
-    chrome_driver_dir = 'chromedriver_86\chromedriver'
+    chrome_driver_dir = 'chrome_driver\chromedriver'
 
     def __init__(self):
         self._browser = None
@@ -66,13 +66,10 @@ class PageOperators(ChromeDriver):
         self.browser.get(url)
 
 
-# def get_href(divs):
-#     for element in divs:
-#         return element.find('a')['href']
-
 def _get_comments(comments_object):
     for comment_object in comments_object:
         yield comment_object.text
+
 
 def click_channel_into_videos_page(operators, channel):
     operators.click(channel)
@@ -84,6 +81,7 @@ def click_video_into_video_detail_page(operators, video):
 
 def _valid_get_comment(comments):
     return len(comments) > 0
+
 
 def run():
     channel_name = 'Onion Man'
