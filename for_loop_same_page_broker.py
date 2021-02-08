@@ -1,4 +1,4 @@
-from same_page import run
+from ckick_into_page import run
 import argparse
 import logging
 from os import path

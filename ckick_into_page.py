@@ -65,6 +65,11 @@ def run(channel_name='Onion Man', video_name='Onion Man | 叛徒', delay=2):
     click_channel_into_videos_page(page_operators, channel_name)
     click_video_into_video_detail_page(page_operators, video_name)
     page_source = page_operators.get_page_source_until_class_loading('comment')
+    if not page_source:
+        logger.error('fail with channel {} video {} click_into_page_ page_source is None'.format(
+            channel_name, video_name
+        ))
+        return
     comments = list(_get_comments(page_source.find_all('div', {'class': 'text'})))
     if _valid_get_comment(comments):
         logger.info('testing get channel {} video {} comments succeed'.format(
